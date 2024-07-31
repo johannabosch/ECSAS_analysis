@@ -1,0 +1,12 @@
+pandas==1.4.3
+pyodbc==4.0.32
+matplotlib==3.5.2
+seaborn==0.11.2
+prettytable==2.5.0
+plotly==5.8.0
+folium==0.12.1
+branca==0.4.2
+geopy==2.2.0
+sklearn==0.0
+numpy==1.22.4
+pygam==0.8.0
