@@ -192,10 +192,45 @@ python heatmap_script.py
 python interactive_map_script.py
 python visibility_script.py
 ```
+#### Running the Interactive Map on an HPC cluster
 
+To run the interactive map generation on an HPC cluster for a file that has a large size, you will need to run through the `preprocessing.py` script with your MDB file first, and then run the SLURM script `run-map.py` that contains the commands to execute the `interactive_map_script.py`on your cluster of choice. I have uploaded a SLURM submission script as an exmaple output after I had  submitted the job to the Graham cluster. 
+
+1. **Create or edit the `run-map.py` file :**
+ 
+ Begin by loading the appropraite modules required for running python on your cluster.
+ This SLURM script will execute the `interactive_map_script.py` by creating a virtual environment to launch python, load the packages and run the script.
+ Make sure to adjust the memory and time usage accordingly.
+ 
+   ```
+   python run-map.py
+   ```
+
+2. **Submit the job:**
+
+   ```
+   sbatch run-map.slurm
+   ```
+
+4. **Check job status or memory usage:**
+
+   You can check the status of your job using the `squeue` command.
+
+   ```
+   squeue -u your_username
+   ```
+
+   or check the memory usage of your script after running it the first time.
+
+   ```
+   seff <JOB-ID>
+   ```
+
+This setup will help you run the interactive map generation on an HPC cluster efficiently.
+Ensure that the paths in your scripts and SLURM file match the actual paths in your project directory.
 
 ## Figures
-The generated figures will be saved in the figures directory. Open the HTML files in a web browser to view the interactive plots and maps.
+The generated figures for this project will be saved in the figures directory. Open the HTML files in a web browser to view the interactive plots and maps.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
