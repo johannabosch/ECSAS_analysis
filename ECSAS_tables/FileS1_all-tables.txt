@@ -1,0 +1,58 @@
+Excel Import Data: ID, CruiseIDOrig, Company, PlatformText, ProgramText, CruiseMainObserver, PlatformType, CruiseSecondObserver, End Date, Start Date, Port Start, Port End, CruiseNote, WatchIDOrig, Observer, Observer2, Date, StartTime, EndTime, ObsLen, LatStart, LongStart, LatEnd, LongEnd, PlatformActivity, Visibility, Weather, Glare, SeaState, WindForce, WindSpeed, WindDir, WindDirDeg, Swell, IceType, IceConc, PlatformSpeed, WatchLenKm, PlatformDir, PlatformDirDeg, ObsSide, ObsHeight, ObsOutIn, ScanTypeID, ScanDir, PlatformClass, DistMethCode, Snapshot, MinSnapLen, WhatCountCode, TransNearEdge, TransFarEdge, WatchNote, SightingIDOrig, Alpha, ObsLat, ObsLong, ObsTime, FlySwim, Count, Distance, InTransect, Association, Behaviour, FlightDir, Age, Plumage, Sex, SightingNote
+lkpAge: AgeCode, AgeText
+lkpAssociation: AssocCode, AssocText
+lkpBeaufortWindspeed: Beaufort, Windspeed
+lkpBehaviour: BehCode, BehText
+lkpCompany: CompanyID, CompanyText
+lkpDataSharing: ShareID, ShareText
+lkpDirections: Direction, DirectionText, DirectionBearing
+lkpDistanceCenters: DistanceCode, Distance
+lkpDistCode: DistCode, DistCodeText, PQDistCode
+lkpDistMeth: DistMethCode, DistMethWaterHow, DistMethFlyHow, DistMethComment
+lkpFlySwim: FlySwimCode, FlySwimText
+lkpGlare: Glare, GlareText
+lkpGPSComPort: ComPortCode, ComPortText
+lkpGPSParity: ParityCode, ParityText
+lkpGPSStopBit: StopBitCode, StopBitText
+lkpIceConcentration: IceCode, IceConc, IceConcDesc
+lkpIceForms: IceForm, IceFormName, IceFormText
+lkpObserver: ObserverID, ObserverName
+lkpObserverSide: ObsSideID, ObsSide
+lkpObsOutIn: ObsOutInID, ObsOutIn
+lkpPlatform: PlatformID, PlatformText
+lkpPlatformActivity: Activity, ActivityText
+lkpPlatformClass: PlatformClassID, PlatformClassText
+lkpPlatformType: PlatformTypeID, PlatformType
+lkpPlumage: PlumCode, PlumText
+lkpPorts: PortID, Port Text
+lkpProgram: ProgramID, ProgramText
+lkpScanType: ScanTypeID, ScanTypeText
+lkpSeaState: SeaStateID, SeaState, SeaStateText
+lkpSeastateWindspeed: SeaState, Windspeed
+lkpSex: SexCode, SexText
+lkpSnapshotLengths: SS_Desc, SS_Len
+lkpSpeciesCodeList: SpCodeListID, SpCodeListText
+lkpSpeciesGroup: Group, SelectString, DisplayString, SpecInfoID
+lkpWeather: Weather, WeatherText
+lkpWhatCount: WhatCountCode, WhatCountText, Description
+lkpWindForce: WindForce, WindForceText
+Switchboard Items: SwitchboardID, ItemNumber, ItemText, Command, Argument
+tblCruise: CruiseID, OldCruiseID, Company, PlatformName, PlatformType, Observer, Observer2, Start Date, End Date, Start Port, End Port, Program, ESRF, AZMP, Atlantic, Quebec, FSRS, Arctic, Observer Training, DataSharing
+tblCruiseNotes: NoteID, CruiseID, Note
+tblfrmQuery Pooled Sample Lines With Effort: SampleLabel, PooledSnapEffort, PooledLineLength, NumWatches, CellName, Julian Day, Observer, CruiseID, Date, Month, Platform, DistMeth, SampleLatStart, SampleLongStart, SampleLatEnd, SampleLongEnd, SampleStartTime
+tblfrmQuery WatchIDs With Sample Label: GridLat, GridLong, CellName, SampleLabel, SampleLatStart, SampleLongStart, SampleLatEnd, SampleLongEnd, WatchID, NumSnap, Line length, Platform, Month, Date, Julian Day, CruiseIDStr, Observer, TransectWidth, DistMeth, SampleStartTime
+tblGroup: GroupID, WatchID
+tblIncGroup: GroupID, WatchID
+tblIncSighting: FlockID, WatchID, Association, Behaviour, FlightDir, FlySwim, SpecInfoID, Count, Age, Plumage, Sex, GroupID, InGroup
+tblIncSightingNotes: NoteID, SightingID, Note
+tblIncWatch: WatchID, CruiseID, Observer, Observer2, theDate, theTime, Lat, Long, CurGrpID
+tblIncWatchNotes: NoteID, WatchID, Note
+tblOptions: WatchLength, SnapshotLength, MinSnapshotLength, CopyNotes, LiveMode, ContinuousMode, GPSRequested, GPSBaud, GPSParity, GPSStopBits, GPSDataBits, GPSComPort, TransectWidth, SpCodeList
+tblQueryOptions: LL_lat, LL_lng, UR_lat, UR_lng, LatBinSize, LongBinSize, WaterProb, FlyingProb, DetProb, FlySwimGroup, FlySwim, SpeciesString, Dummy, Program, CruiseFromDate, CruiseToDate, DistMethResrtict, DistMeth, DistTypeGroup, EffortAgg, GridCheck, PlatformClass, DSExtractToFile, StartDir, ESRF, Atlantic, AZMP, Arctic, Quebec, Season, ResManStartDir, CustomSpecName, SuggestsFilename, FSRS, Headings, InTransect, InTransectP, InTransectR
+tblSighting: FlockID, OldFlockID, OldPiropID, WatchID, ObsLat, ObsLong, ObsTime, Distance, InTransect, DistanceR, InTransectP, InTransectR, Association, InexpAssoc, Behaviour, InexpFeed, FlightDir, FlySwim, SpecInfoID, Count, Age, Plumage, Sex, GroupID, InGroup
+tblSightingNotes: NoteID, SightingID, Note
+tblSmall Db Table List: TabName
+tblSpeciesInfo: SpecInfoID, OldPiropCode, AphiaID, TSN, Alpha, PacificAlpha, English, PacificEnglish, FrenchAlpha, FrenchCommon, Latin, Class, Seabird, Waterbird
+tblVersion: Version
+tblWatch: WatchID, Key, OldWatchID, CruiseID, Observer, Observer2, Date, StartTime, EndTime, ObsLen, LatStart, LongStart, LatEnd, LongEnd, PlatformActivity, Visibility, Weather, Glare, SeaState, WindForce, WindSpeed, WindDir, WindDirDeg, Swell, IceType, IceConc, PlatformSpeed, Kilometers, PlatformDir, PlatformDirDeg, ObsSide, ObsHeight, ObsOutIn, ScanType, ScanDir, PlatformClass, DistMeth, Snapshot, MinSnapLen, WhatCount, TransNearEdge, TransFarEdge, CurGrpID, TransectNo, ObservationType
+tblWatchNotes: NoteID, WatchID, Note

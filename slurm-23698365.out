@@ -1,0 +1,51 @@
+
+The following have been reloaded with a version change:
+  1) python/3.10.13 => python/3.11.5
+
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting folium
+  Obtaining dependency information for folium from https://files.pythonhosted.org/packages/ae/6d/18a7546e1748ecdd6ed7cd00d3f183faf1df08bd4f5e5e0eb3e72458b862/folium-0.17.0-py2.py3-none-any.whl.metadata
+  Using cached folium-0.17.0-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting branca>=0.6.0 (from folium)
+  Obtaining dependency information for branca>=0.6.0 from https://files.pythonhosted.org/packages/75/ca/6074ab4a04dd1a503201c18091b3426f3709670115fae316907a97f98d75/branca-0.7.2-py3-none-any.whl.metadata
+  Using cached branca-0.7.2-py3-none-any.whl.metadata (1.5 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/jinja2-3.1.4+computecanada-py3-none-any.whl (from folium)
+Requirement already satisfied: numpy in /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Compiler/gcccore/scipy-stack/2024a/lib/python3.11/site-packages (from folium) (1.26.4+computecanada)
+Collecting requests (from folium)
+  Obtaining dependency information for requests from https://files.pythonhosted.org/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl.metadata
+  Using cached requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting xyzservices (from folium)
+  Obtaining dependency information for xyzservices from https://files.pythonhosted.org/packages/5f/51/c106f095c33de0b833d3823fbab3383248476b3a9fd4dcd59ba01d950361/xyzservices-2024.6.0-py3-none-any.whl.metadata
+  Using cached xyzservices-2024.6.0-py3-none-any.whl.metadata (4.0 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/MarkupSafe-2.1.5+computecanada-cp311-cp311-linux_x86_64.whl (from jinja2>=2.9->folium)
+Collecting charset-normalizer<4,>=2 (from requests->folium)
+  Obtaining dependency information for charset-normalizer<4,>=2 from https://files.pythonhosted.org/packages/28/76/e6222113b83e3622caa4bb41032d0b1bf785250607392e1b778aca0b8a7d/charset_normalizer-3.3.2-py3-none-any.whl.metadata
+  Using cached charset_normalizer-3.3.2-py3-none-any.whl.metadata (33 kB)
+Collecting idna<4,>=2.5 (from requests->folium)
+  Obtaining dependency information for idna<4,>=2.5 from https://files.pythonhosted.org/packages/e5/3e/741d8c82801c347547f8a2a06aa57dbb1992be9e948df2ea0eda2c8b79e8/idna-3.7-py3-none-any.whl.metadata
+  Using cached idna-3.7-py3-none-any.whl.metadata (9.9 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->folium)
+  Obtaining dependency information for urllib3<3,>=1.21.1 from https://files.pythonhosted.org/packages/ca/1c/89ffc63a9605b583d5df2be791a27bc1a42b7c32bab68d3c8f2f73a98cd4/urllib3-2.2.2-py3-none-any.whl.metadata
+  Using cached urllib3-2.2.2-py3-none-any.whl.metadata (6.4 kB)
+Collecting certifi>=2017.4.17 (from requests->folium)
+  Obtaining dependency information for certifi>=2017.4.17 from https://files.pythonhosted.org/packages/1c/d5/c84e1a17bf61d4df64ca866a1c9a913874b4e9bdc131ec689a0ad013fb36/certifi-2024.7.4-py3-none-any.whl.metadata
+  Using cached certifi-2024.7.4-py3-none-any.whl.metadata (2.2 kB)
+Using cached folium-0.17.0-py2.py3-none-any.whl (108 kB)
+Using cached branca-0.7.2-py3-none-any.whl (25 kB)
+Using cached requests-2.32.3-py3-none-any.whl (64 kB)
+Using cached xyzservices-2024.6.0-py3-none-any.whl (83 kB)
+Using cached certifi-2024.7.4-py3-none-any.whl (162 kB)
+Using cached charset_normalizer-3.3.2-py3-none-any.whl (48 kB)
+Using cached idna-3.7-py3-none-any.whl (66 kB)
+Using cached urllib3-2.2.2-py3-none-any.whl (121 kB)
+Installing collected packages: xyzservices, urllib3, MarkupSafe, idna, charset-normalizer, certifi, requests, jinja2, branca, folium
+Successfully installed MarkupSafe-2.1.5+computecanada branca-0.7.2 certifi-2024.7.4 charset-normalizer-3.3.2 folium-0.17.0 idna-3.7 jinja2-3.1.4+computecanada requests-2.32.3 urllib3-2.2.2 xyzservices-2024.6.0
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting openpyxl
+  Obtaining dependency information for openpyxl from https://files.pythonhosted.org/packages/c0/da/977ded879c29cbd04de313843e76868e6e13408a94ed6b987245dc7c8506/openpyxl-3.1.5-py2.py3-none-any.whl.metadata
+  Using cached openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/et_xmlfile-1.1.0+computecanada-py3-none-any.whl (from openpyxl)
+Using cached openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+Installing collected packages: et-xmlfile, openpyxl
+Successfully installed et-xmlfile-1.1.0+computecanada openpyxl-3.1.5
+Map has been created and saved as 'survey_map.html'. Open this file in a web browser to view the map.
