@@ -184,16 +184,13 @@ This script creates a scatter plot showing the relationship between the observer
 ```python preprocessing_script.py```
 
 4. **Run Analysis Scripts:**
-```
-bash
-Copy code
-python basic_metrics_script.py
-python gam_script.py
-python pie_chart_script.py
-python heatmap_script.py
-python interactive_map_script.py
-python visibility_script.py
-```
+```python basic_metrics_script.py```
+```python gam_script.py```
+```python pie_chart_script.py```
+```python heatmap_script.py```
+```python interactive_map_script.py```
+```python visibility_script.py```
+
 
 ## Figures
 The generated figures will be saved in the figures directory. Open the HTML files in a web browser to view the interactive plots and maps.
