@@ -5,198 +5,126 @@
 Johanna-Lisa Bosch
 
 ## Abstract
-This project assesses seabird species prevalence and the environmental factors influencing their distribution during an offshore seabird survey conducted by Environment and Climate Change Canada. The study identifies the most common seabird species and examines how weather, sea state, and glare conditions affect their presence.
-
-## Introduction
-Seabird populations and their distribution patterns are critical indicators of ocean health and ecosystem dynamics. Historically, systematic monitoring of seabirds in Atlantic Canada ceased in the mid-1980s, creating a gap in data needed to understand the impacts of human activities on these species (Gjerdrum et al. 2012). In response, Environment and Climate Change Canada (ECCC) established a pelagic seabird monitoring program, with protocols formalized by Gjerdrum et al. (2012). This analysis of a survey conducted approximately 500 km off the coast of Newfoundland aims to identify the most common seabird species and analyze how various environmental conditions influence their presence.
+This project assesses seabird species prevalence and the environmental factors influencing their distribution during an offshore seabird survey conducted by Environment and Climate Change Canada. Scripts are written using Python.
 
 ## Background
-ECSAS surveys offshore are conducted by observing birds along a line transect on one side of the boat that is ≤300 m (Tasker et al. 1984) depending on the visibility from the platform. All observers conducting the surveys are trained and have experience working with and identifying seabirds. As the observer performs the surveys, data is entered into a Microsoft Access Database (SQL based) customized for ECSAS protocols. The data includes watch period details, species sightings, weather, sea state, glare conditions, and more.
+Seabird populations and their distribution patterns are critical indicators of ocean health and ecosystem dynamics. Historically, systematic monitoring of seabirds in Atlantic Canada ceased in the mid-1980s, creating a gap in data needed to understand the impacts of human activities on these species. In response, Environment and Climate Change Canada (ECCC) established a pelagic seabird monitoring program, with protocols formalized by [Gjerdrum et al. (2012)](https://www.cnlopb.ca/wp-content/uploads/nexenergy/ecseabird.pdf).
 
-## Report
-A more detailed report is available in the /ISP_report folder.
+This analysis looks at the metrics from an ECSAS survey conducted approximately 500 km off the coast of Newfoundland, and aims to identify the most common seabird species and analyze how various environmental conditions influence their presence. Data is avaialble [here](https://github.com/johannabosch/ECSAS_analysis/tree/main/data).
+
+ECSAS surveys offshore are conducted by observing birds along a line transect on one side of the boat that is ≤300 m (([Tasker et al. 1984](https://academic.oup.com/auk/article/101/3/567/5191249?login=false))) depending on the visibility from the platform. All observers conducting the surveys are trained and have experience working with and identifying seabirds. As the observer performs the surveys, data is entered into a Microsoft Access Database (SQL based) customized for ECSAS protocols. The data includes watch period details, species sightings, weather, sea state, glare conditions, and more (see [data/stationary](https://github.com/johannabosch/ECSAS_analysis/tree/main/data)).
+
+A more detailed report is available in the [/ISP_report](https://github.com/johannabosch/ECSAS_analysis/blob/main/ISP_report/ISP_report_JBosch.pdf) folder.
 
 ## Preprocessing Script
 
 **File:** `preprocessing.py`
 
-### Description:
-This script retrieves data from a Microsoft Access Database, performs SQL queries to fetch tables, and merges relevant data to create a comprehensive dataset for analysis.
+Retrieves data from an Access Database, performs SQL queries to fetch tables, and merges relevant data to create a comprehensive dataset for analysis. Steps include:
 
-### Steps:
-1. **Connecting to the Access Database:**
+**Connecting to the Access Database:**
    - Establish a connection using a driver.
-   - Create a text file containing a list of each table with all of their column names for organizing data during SQL queries.
    - Perform SQL queries to fetch tables and save them as Excel files.
 
-2. **Merging Data Files:**
-   - Read data from multiple tables including `tblWatch`, `tblSighting`, `lkpPlatformClass`, and `tblSpeciesInfo`.
-   - Merge these tables based on unique identifiers to create a final dataset.
-   - Handle `NaN` values in the `Count` column by filling them with 0.
+**Merging Data Files:**
+   - Read data from multiple tables
+   - Merge these tables based on unique identifiers to create a final dataset.  
    - Separate stationary and moving platform survey data into different files.
 
-3. **Data Clean-Up:**
+**Cleaning data:**
    - Drop unnecessary columns.
+   - Handle `NaN` values in the `Count` column by filling them with 0.
    - Save the final datasets as Excel files (`moving_platform_data.xlsx` and `stationary_platform_data.xlsx`).
+
 
 ## Basic Metrics Script
 
 **File:** `basic_metrics.py`
 
-### Description:
-This script calculates basic metrics for the stationary and moving platform surveys and creates a summary table with PrettyTable.
+Calculates basic metrics for the surveys and creates a summary table with PrettyTable.
 
-### Steps:
-1. **Load Data:**
-   - Load stationary and moving survey data from Excel files.
-   - Convert the `Date` column to datetime format.
-
-2. **Calculate Metrics:**
-   - Determine the cruise start and end dates.
+**Calculate Metrics:**
    - Calculate the total number of surveys conducted, species observed, and count occurrences for each species.
-   - Identify the most and least seen species for both moving and stationary surveys.
-
-3. **Display Metrics:**
+     
+**Display Metrics:**
    - Create a PrettyTable to display the calculated metrics.
-   - Print the summary table and additional cruise information.
+
 
 ## GAM Script
 
 **File:** `GAM_scatter.py`
 
-### Description:
-This script analyzes seabird prevalence during the cruise period by creating a scatter plot of species counts per watch and fitting a Generalized Additive Model (GAM).
+Analyzes seabird prevalence during the cruise period by creating a scatter plot of species counts per watch and fitting a Generalized Additive Model (GAM).
 
-### Steps:
-1. **Load Data:**
-   - Load stationary survey data from an Excel file.
-   - Extract relevant columns and group data by species and watch ID.
-
-2. **Calculate Z-Scores:**
+**Calculate Z-Scores:**
    - Calculate z-scores for the counts of each species.
-   - Compute the arithmetic mean of the z-scores for each WatchID.
 
-3. **Fit GAM Model:**
+**Fit GAM Model:**
    - Fit a GAM model to the data.
    - Generate predictions and calculate confidence intervals.
 
-4. **Create Scatter Plot:**
-   - Use Plotly to create an interactive scatter plot with a GAM line and confidence intervals.
-   - Save the plot as an HTML file.
+**Create Scatter Plot:**
+   - Use Plotly to create an interactive scatter plot
 
 ## Pie Chart Script
 
 **File:** `pie-chart.py`
 
-### Description:
-This script creates pie charts displaying the most common sea state, weather, and glare conditions during the 17-day cruise using Plotly.
+Creates pie charts displaying the most common sea state, weather, and glare conditions during the cruise
 
-### Steps:
-1. **Load Data:**
-   - Load stationary survey data and metadata files for weather, sea state, and glare.
-
-2. **Aggregate Data:**
+**Process Data:**
    - Aggregate the most common weather, sea state, and glare codes.
    - Merge with metadata to get descriptive labels.
 
-3. **Create Pie Charts:**
-   - Create a subplot figure with three pie charts for weather, sea state, and glare.
-   - Save the figure as an HTML file.
+**Create Pie Charts:**
+   - Create a subplot figure with three pie charts
 
 ## Heatmap Script
 
 **File:** `heatmaps.py`
 
-### Description:
-This script creates heatmaps to show the most common weather and sea state codes for each species.
+Creates heatmaps to show the most common weather and sea state codes for each species.
 
-### Steps:
-1. **Load Data:**
-   - Load stationary survey data and metadata files for weather and sea state.
-
-2. **Find Most Common Codes:**
+**Find Most Common Codes:**
    - Calculate the most common weather and sea state codes for each species.
    - Merge with metadata to get descriptive labels.
 
-3. **Create Heatmaps:**
-   - Create full pivot tables with all possible codes as indices and columns.
-   - Plot heatmaps for weather and sea state.
-   - Save the plot as a PNG file.
+**Create Heatmaps:**
+   - Create full pivot tables
+   - Plot heatmaps for weather and sea state
+
+## Visibility Script
+
+**File:** `visibility.py`
+Creates a scatter plot showing the relationship between the observer's visibility from the platform (in km) and the number of birds counted per watch.
+
+**Fit Linear Regression Model:**
+   - Fit a linear regression model to the data.
+   - Calculate the slope, intercept, and R² value.
+
+**Create Scatter Plot:**
+   - Plot the scatter plot with a line of best fit.
 
 ## Interactive Map Script
 
 **File:** `interactive_map.py`
 
-### Description:
-This script creates an interactive map showing survey points with details about species observed and environmental conditions.
+Creates an interactive map showing survey points with details about species observed and environmental conditions.
 
-### Steps:
-1. **Load Data:**
-   - Load stationary survey data and metadata files.
-   - Clean and merge data to get observer, platform names, and watch notes.
-
-2. **Aggregate Data:**
-   - Aggregate species and counts for each WatchID.
+**Processing Data:**
+   - Aggregate species and counts for each watch.
    - Calculate total birds observed per watch.
 
-3. **Create Interactive Map:**
+**Create Interactive Map:**
    - Initialize a map using Folium.
-   - Add survey points with details in pop-ups.
-   - Add port markers and measure control.
-   - Save the map as an HTML file.
+   - Add survey points with details in pop-ups boxes
+   - Add port markers
 
-## Visibility Script
-
-**File:** `visibility.py`
-
-### Description:
-This script creates a scatter plot showing the relationship between the observer's visibility from the platform (in km) and the number of birds counted per watch.
-
-### Steps:
-1. **Load Data:**
-   - Load stationary survey data from an Excel file.
-
-2. **Calculate Total Count:**
-   - Aggregate the total count of birds for each WatchID.
-   - Merge total counts with visibility data.
-
-3. **Fit Linear Regression Model:**
-   - Fit a linear regression model to the data.
-   - Calculate the slope, intercept, and R² value.
-
-4. **Create Scatter Plot:**
-   - Plot the scatter plot with a line of best fit.
-   - Save the plot as a PNG file.
-
-## Usage
-
-1. **Clone the Repository:**
-
-  ```git clone https://github.com/johannalisabosch/seabird-survey-analysis.git```
-  ```cd seabird-survey-analysis```
-
-2. **Install Dependencies**
-
-```pip install -r requirements.txt```
-
-3. **Run Preprocessing Script:**
-
-```python preprocessing_script.py```
-
-4. **Run Analysis Scripts:**
-```
-python basic_metrics_script.py
-python gam_script.py
-python pie_chart_script.py
-python heatmap_script.py
-python interactive_map_script.py
-python visibility_script.py
-```
 #### Running the Interactive Map on an HPC cluster
 
 To run the interactive map generation on an HPC cluster for a file that has a large size, you will need to run through the `preprocessing.py` script with your MDB file first, and then run the SLURM script `run-map.py` that contains the commands to execute the `interactive_map_script.py`on your cluster of choice. I have uploaded a SLURM submission script as an exmaple output after I had  submitted the job to the Graham cluster. 
 
-1. **Create or edit the `run-map.py` file :**
+**Create or edit the `run-map.py` file :**
  
  Begin by loading the appropraite modules required for running python on your cluster.
  This SLURM script will execute the `interactive_map_script.py` by creating a virtual environment to launch python, load the packages and run the script.
@@ -206,13 +134,13 @@ To run the interactive map generation on an HPC cluster for a file that has a la
    python run-map.py
    ```
 
-2. **Submit the job:**
+**Submit the job:**
 
    ```
    sbatch run-map.slurm
    ```
 
-4. **Check job status or memory usage:**
+**Check job status or memory usage:**
 
    You can check the status of your job using the `squeue` command.
 
@@ -228,6 +156,32 @@ To run the interactive map generation on an HPC cluster for a file that has a la
 
 This setup will help you run the interactive map generation on an HPC cluster efficiently.
 Ensure that the paths in your scripts and SLURM file match the actual paths in your project directory.
+
+
+## Usage
+
+**Clone the Repository:**
+
+  ```git clone https://github.com/johannalisabosch/seabird-survey-analysis.git```
+  ```cd seabird-survey-analysis```
+
+**Install Dependencies**
+
+```pip install -r requirements.txt```
+
+**Run Preprocessing Script:**
+
+```python preprocessing_script.py```
+
+**Run Analysis Scripts:**
+```
+python basic_metrics_script.py
+python gam_script.py
+python pie_chart_script.py
+python heatmap_script.py
+python interactive_map_script.py
+python visibility_script.py
+```
 
 ## Figures
 The generated figures for this project will be saved in the figures directory. Open the HTML files in a web browser to view the interactive plots and maps.
