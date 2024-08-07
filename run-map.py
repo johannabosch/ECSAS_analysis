@@ -16,7 +16,7 @@ pip install folium
 pip install openpyxl
 
 # Run your script
-python map.py
+python interactive_map.py
 
 # Deactivate the virtual environment
 deactivate
